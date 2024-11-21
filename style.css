@@ -1,0 +1,14 @@
+/* ----------------------------------------- */
+/* ----- Header ----- */
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+header a {
+    margin-left: 10px;
+}
+header a {
+    text-decoration: none;
+}
+/* ----------------------------------------- */

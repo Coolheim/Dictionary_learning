@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Dictionary learning</h1>
-    <a href="login.php"><button>Sing in</button></a>
-    <a href="registration.php"><button>Sing up</button></a>
+    <?php include "header.php" ?>
 </body>
 </html>
