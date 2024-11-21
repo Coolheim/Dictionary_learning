@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>Dictionary learning</h1>
+    <a href="login.php"><button>Sing in</button></a>
+    <a href="registration.php"><button>Sing up</button></a>
 </body>
 </html>
