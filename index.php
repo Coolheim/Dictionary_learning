@@ -8,5 +8,9 @@
 </head>
 <body>
     <?php include "header.php" ?>
+    <div class="container">
+        <h1>Welcome to Dashboard</h1>
+    </div>
+    
 </body>
 </html>
