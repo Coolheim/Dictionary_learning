@@ -31,20 +31,30 @@ body {
 
 .header-buttons {
     display: flex;
+    gap: 15px; /* Přidání rozestupu mezi tlačítky */
 }
 
 .header-buttons a {
-    margin-left: 15px;
     text-decoration: none;
     color: #fff;
-    padding: 8px 15px;
-    background-color: #444;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    padding: 12px 20px;
+    background-color: #555;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Přidání stínu pro lepší efekt */
+    transition: all 0.3s ease;
 }
 
 .header-buttons a:hover {
-    background-color: #555;
+    background-color: #848484;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-buttons a:active {
+    background-color: #3f3f3f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
 }
 
 /* Dashboard Styling */
@@ -78,10 +88,92 @@ body {
     background-color: #555;
 }
 
+/* New Button Styling (for your new buttons) */
+.links-container {
+    display: flex;
+    justify-content: center; /* Center the buttons and image */
+    align-items: flex-start;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column; /* Stacking buttons vertically */
+    gap: 20px;
+    flex: 1;
+    justify-content: center; /* Ensure buttons are vertically centered */
+    align-items: center; /* Center the buttons */
+}
+
+.link-btn {
+    padding: 25px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 250px; /* Fixed width for consistent button size */
+}
+
+.link-btn:hover {
+    background-color: #555;
+}
+
+.link-btn:active {
+    background-color: #3f3f3f;
+}
+
+/* Styling for the image */
+.dashboard-image {
+    max-width: 300px; /* Larger image size */
+    height: auto;
+    margin-left: 30px;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Styling pro tlačítka s třídou classy-btn */
+
+.classy-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 20px;
+    background-color: #555;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Přidání stínu pro lepší efekt */
+    transition: all 0.3s ease; /* Zajišťuje hladký přechod efektů */
+}
+
+.classy-btn:hover {
+    background-color: #848484;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Silnější stín při hover */
+}
+
+.classy-btn:active {
+    background-color: #3f3f3f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Menší stín při kliknutí */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .dashboard-container {
         width: 90%;
         margin: 20px auto;
     }
+
+    .links-container {
+        flex-direction: column; /* Stack buttons and image vertically on small screens */
+        align-items: center;
+    }
+
+    .links {
+        margin-bottom: 30px; /* Adds space below the buttons */
+    }
+
 }
