@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION["user"])){
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +27,9 @@
                 $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 if ($user){
                     if (password_verify($password, $user["password"])){
-                        header("Location : index.php");
+                        session_start();
+                        $_SESSION["user"] = "yes";
+                        header("Location: index.php");
                         die();
                     } else {
                         echo "<div>Password does not match XD</div>";

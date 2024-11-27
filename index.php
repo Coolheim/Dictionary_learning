@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION["user"])){
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +17,7 @@
     <?php include "header.php" ?>
     <div class="container">
         <h1>Welcome to Dashboard</h1>
+        <a href="logout.php">Logout</a>
     </div>
     
 </body>
