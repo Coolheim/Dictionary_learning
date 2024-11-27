@@ -1,0 +1,87 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.header-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    background-color: #444;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.header-buttons a:hover {
+    background-color: #555;
+}
+
+/* Dashboard Styling */
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
