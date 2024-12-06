@@ -66,6 +66,7 @@ if (isset($_SESSION["user"])) {
                         mysqli_stmt_bind_param($stmt, "sss", $nickname, $email, $passwordHash);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='success-msg'>You are registered successfully!</div>";
+                        header("Location: login.php");
                     } else {
                         echo "<div class='error-msg'>Something went wrong, try again.</div>";
                     }
