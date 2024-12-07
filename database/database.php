@@ -1,9 +1,9 @@
 <?php 
 
 $hostname = "localhost";
-$dbUser = "kulheimm";
-$dbPassword = "swa_projekt_24";
-$dbName = "kulheimm_dic_learning";
+$dbUser = "root";
+$dbPassword = "";
+$dbName = "login_register";
 
 $conn = mysqli_connect($hostname, $dbUser, $dbPassword, $dbName);
 
