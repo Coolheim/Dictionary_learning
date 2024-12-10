@@ -42,3 +42,35 @@ body {
 .header-buttons a:hover {
     background-color: #555;
 }
+
+/* Main Content Styling */
+.about_me_div {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+/* Highlight links inside content */
+.about_me_div a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.about_me_div a:hover {
+    color: #004099;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about_me_div {
+        margin: 10px;
+        padding: 10px;
+    }
+}

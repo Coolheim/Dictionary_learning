@@ -30,14 +30,13 @@
 
     <div class="dashboard-container">
         <h1 class="dashboard-title">Welcome to your Dashboard</h1>
-        
     </div>
 
     <div class="links-container">
         <div class="links">
-            <a href="" class="link-btn">Dictionary Settings</a>
-            <a href="" class="link-btn">Learning</a>
-            <a href="" class="link-btn">Check your understanding</a>
+            <a href="subpages/dictionary_pages/dictionary_setting.php" class="link-btn">Dictionary Settings</a>
+            <a href="subpages/dictionary_pages/dictionary_learning.php" class="link-btn">Learning</a>
+            <a href="subpages/dictionary_pages/dictionary_test.php" class="link-btn">Check your understanding</a>
         </div>
         <img src="img/dictionaries.png" alt="Dictionaries" class="dashboard-image">
     </div>
