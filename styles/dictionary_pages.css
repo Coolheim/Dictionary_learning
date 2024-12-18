@@ -42,3 +42,108 @@ body {
 .header-buttons a:hover {
     background-color: #555;
 }
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Zarovnání obsahu uvnitř settings-container */
+.settings-container {
+    display: flex;
+    justify-content: space-between; /* Rozdělí oba divy rovnoměrně */
+    align-items: flex-start;
+    gap: 20px; /* Vytvoří mezeru mezi oběma divy */
+    margin: 30px auto; /* Větší mezera kolem */
+    padding: 30px;
+    max-width: 1000px; /* Užší pro lepší vzhled */
+    background-color: #f4f7fc;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Jemnější stín */
+}
+
+/* Vnitřní boxy */
+.settings-container > div {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #ddd; /* Světlejší okraj */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Mírný stín */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Formulář uvnitř levého boxu */
+form input[type="text"] {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+form input[type="submit"] {
+    margin-top: 10px; /* Větší mezera nad tlačítkem */
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #444444; /* Zelené tlačítko */
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+}
+form input[type="submit"]:hover {
+    background-color: #636363;
+}
+
+/* Button styling - Save dictionary */
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #444444; /* Zelené tlačítko */
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #636363; /* Tmavší zelená při hoveru */
+}
+
+/* Select box styling (pravý box) */
+select {
+    width: 100%;
+    height: 250px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}

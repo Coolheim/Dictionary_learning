@@ -19,22 +19,7 @@
         </div>
     </header>
 
-    <div class="dashboard-container">
-        <h1 class="dashboard-title">Dictionary settings</h1>
-    </div>
-
-    <div>
-        <button>Vytvořit json</button>
-        <div>
-            <div>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-            <button></button>
-            <button></button>
-        </div>
-    </div>
+    
 
 </body>
 </html>

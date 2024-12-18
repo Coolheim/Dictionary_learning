@@ -19,6 +19,31 @@
         </div>
     </header>
 
-    
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Dictionary settings</h1>
+    </div>
+
+    <div class="settings-container">
+        <div>
+            <form action="">
+                <input type="text" placeholder="English">
+                <input type="text" placeholder="Czech">
+                <input type="submit" value="Add word">
+            </form>
+            <button>Save dictionary</button>
+        </div>
+        <div>
+            <select name="Cars" size="5" multiple="multiple">  
+                <option value="Merceders">Merceders</option>  
+                <option value="BMW">BMW</option>  
+                <option value="Jaguar">Jaguar</option>  
+                <option value="Lamborghini">Lamborghini</option>  
+                <option value="Ferrari">Ferrari</option>  
+                <option value="Ford">Ford</option>  
+            </select>  
+        </div>
+    </div>
+
+
 </body>
 </html>
