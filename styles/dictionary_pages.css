@@ -93,31 +93,34 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Levý box s formulářem */
+.settings-container > div:first-child {
+    display: flex; /* Flexbox pro zarovnání obsahu */
+    flex-direction: column; /* Obsah se zobrazí vertikálně */
+    justify-content: center; /* Vertikální zarovnání na střed */
+    align-items: center; /* Horizontální zarovnání na střed */
+    height: 100%; /* Výška boxu bude vždy 100% */
+}
+
+form {
+    width: 100%; /* Formulář na plnou šířku boxu */
+    max-width: 400px; /* Maximální šířka formuláře */
+    display: flex;
+    flex-direction: column; /* Inputy a tlačítka pod sebou */
+    align-items: center; /* Zarovnání obsahu na střed */
+}
+
+
 /* Formulář uvnitř levého boxu */
 form input[type="text"] {
     display: block;
-    margin-bottom: 20px;
-    width: 100%;
+    margin-bottom: 20px; /* Mezera mezi inputy */
+    width: 100%; /* Textboxy budou stejně široké jako formulář */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-form input[type="submit"] {
-    margin-top: 10px; /* Větší mezera nad tlačítkem */
-    margin-right: 10px;
-    padding: 10px 15px;
-    background-color: #444444; /* Zelené tlačítko */
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    border: none;
-}
-form input[type="submit"]:hover {
-    background-color: #636363;
 }
 
 /* Button styling - Save dictionary */

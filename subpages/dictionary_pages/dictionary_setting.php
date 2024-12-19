@@ -26,24 +26,43 @@
     <div class="settings-container">
         <div>
             <form action="">
-                <input type="text" placeholder="English">
-                <input type="text" placeholder="Czech">
-                <input type="submit" value="Add word">
+                <input type="text" placeholder="English" id="En_textBox">
+                <input type="text" placeholder="Czech" id="Cz_textBox">
+                <button type="button" onclick="fun1()">Add word</button>
             </form>
             <button>Save dictionary</button>
         </div>
         <div>
-            <select name="Cars" size="5" multiple="multiple">  
-                <option value="Merceders">Merceders</option>  
-                <option value="BMW">BMW</option>  
-                <option value="Jaguar">Jaguar</option>  
-                <option value="Lamborghini">Lamborghini</option>  
-                <option value="Ferrari">Ferrari</option>  
-                <option value="Ford">Ford</option>  
+            <select name="Words" id="selectElement" multiple="multiple">  
+
             </select>  
         </div>
     </div>
 
+    <script>
+        console.log("Dobre propojeno");
+
+        const fun1 = () => {
+            const en_word_input = document.getElementById("En_textBox");
+            const cz_word_input = document.getElementById("Cz_textBox");
+            const en_word = en_word_input.value;
+            const cz_word = cz_word_input.value;
+
+            console.log(en_word); // Display the English word
+            console.log(cz_word); // Display the Czech word
+
+            let select = document.getElementById("selectElement");
+            let opt = document.createElement("option");
+            let enAcz = en_word + " : " + cz_word;
+            opt.value = enAcz;
+            console.log(enAcz);
+            opt.innerHTML = enAcz;
+            select.appendChild(opt);
+
+            en_word_input.value = "";
+            cz_word_input.value = "";
+        }
+    </script>
 
 </body>
 </html>
