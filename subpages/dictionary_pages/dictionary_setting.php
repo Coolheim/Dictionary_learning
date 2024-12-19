@@ -28,40 +28,81 @@
             <form action="">
                 <input type="text" placeholder="English" id="En_textBox">
                 <input type="text" placeholder="Czech" id="Cz_textBox">
-                <button type="button" onclick="fun1()">Add word</button>
+                <button type="button" onclick="funAddWordToSelectElement()">Add word</button>
             </form>
-            <button>Save dictionary</button>
+            <button onclick="funSaveDic()">Save dictionary</button>
         </div>
         <div>
-            <select name="Words" id="selectElement" multiple="multiple">  
-
-            </select>  
+            <select name="Words" id="selectElement" multiple="multiple"></select>  
         </div>
     </div>
 
     <script>
-        console.log("Dobre propojeno");
+        const dictionary = {};
 
-        const fun1 = () => {
+        const funAddWordToSelectElement = () => {
             const en_word_input = document.getElementById("En_textBox");
             const cz_word_input = document.getElementById("Cz_textBox");
-            const en_word = en_word_input.value;
-            const cz_word = cz_word_input.value;
+            const en_word = en_word_input.value.trim();
+            const cz_word = cz_word_input.value.trim();
 
             console.log(en_word); // Display the English word
             console.log(cz_word); // Display the Czech word
 
-            let select = document.getElementById("selectElement");
-            let opt = document.createElement("option");
-            let enAcz = en_word + " : " + cz_word;
-            opt.value = enAcz;
-            console.log(enAcz);
-            opt.innerHTML = enAcz;
-            select.appendChild(opt);
+            if (en_word === "") {
+                alert("En input is empty.");
+                return;
+            }
+            if (cz_word === "") {
+                alert("Cz input is empty.");
+                return;
+            }
+            if (!dictionary[en_word]) {
+                dictionary[en_word] = cz_word;
 
-            en_word_input.value = "";
-            cz_word_input.value = "";
+                const select = document.getElementById("selectElement");
+                const opt = document.createElement("option");
+                opt.value = en_word;
+                opt.innerHTML = `${en_word} : ${cz_word}`;
+                select.appendChild(opt);
+
+                en_word_input.value = "";
+                cz_word_input.value = "";
+            } else {
+                alert("This English word is already added");
+            }        
+
+            console.log(dictionary);
         }
+
+        const funSaveDic = () => {
+            if (Object.keys(dictionary).length === 0){
+                alert("No words to save.");
+                return;
+            }
+
+            const jsonData = JSON.stringify(dictionary);
+
+            fetch('save_dictionary.php', {
+                method: 'POST',
+                header: { 'Content-Type': 'application/json' },
+                body: jsonData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success){
+                    alert("Dictionary saved successfully.");
+                } else {
+                    alert("Failed to save dictionary.");
+                }
+            })
+            .catch(error => {
+                console.error('Error saving dictionary: ', error);
+            })
+
+            console.log("Saved dic: ", jsonData);
+        }
+
     </script>
 
 </body>
