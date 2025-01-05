@@ -75,35 +75,38 @@
             console.log(dictionary);
         }
 
-        const funSaveDic = () => {
-            if (Object.keys(dictionary).length === 0){
-                alert("No words to save.");
+        const funSaveDic = async () => {
+            if (Object.keys(dictionary).length === 0) {
+                alert("The dictionary is empty. Add words before saving.");
                 return;
             }
 
-            const jsonData = JSON.stringify(dictionary);
+            try {
+                const response = await fetch('../../database/dictionaries/save_dictionary.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ dictionary }),
+                });
 
-            fetch('save_dictionary.php', {
-                method: 'POST',
-                header: { 'Content-Type': 'application/json' },
-                body: jsonData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success){
-                    alert("Dictionary saved successfully.");
+                if (response.ok) {
+                    alert('Dictionary saved successfully!');
                 } else {
-                    alert("Failed to save dictionary.");
+                    alert('Failed to save dictionary.');
                 }
-            })
-            .catch(error => {
-                console.error('Error saving dictionary: ', error);
-            })
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while saving the dictionary.');
+            }
+        };
 
-            console.log("Saved dic: ", jsonData);
-        }
-
+        
     </script>
 
+        <?php
+            session_start();
+            var_dump($_SESSION);
+        ?>
 </body>
 </html>

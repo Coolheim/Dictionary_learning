@@ -1,6 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION["user"])) {
+
+// Pokud je uživatel již přihlášen, přesměrujte ho na hlavní stránku
+if (isset($_SESSION["user_id"])) {
     header("Location: ../../index.php");
     exit();
 }
@@ -27,34 +29,47 @@ if (isset($_SESSION["user"])) {
         <h2 class="form-title">Login</h2>
 
         <?php 
-            if (isset($_POST["login"])){
-                $email = $_POST["email"];
-                $password = $_POST["password"];
-                require_once "../database.php";
-                $sql = "SELECT * FROM users WHERE email = '$email'";
-                $result = mysqli_query($conn, $sql);
-                $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                if ($user){
-                    if (password_verify($password, $user["password"])){
-                        session_start();
-                        $_SESSION["user"] = "yes";
-                        header("Location: ../../index.php");
-                        die();
-                    } else {
-                        echo "<div class='error-msg'>Password does not match</div>";
-                    }
+        if (isset($_POST["login"])) {
+            // Získání vstupů z formuláře
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+
+            require_once "../database.php"; // Připojení k databázi
+
+            // Dotaz pro získání uživatele podle emailu
+            $sql = "SELECT * FROM users WHERE email = ?";
+            $stmt = $conn->prepare($sql); // Použijeme prepared statement pro bezpečnost
+            $stmt->bind_param("s", $email); // Nahrazení parametru emailu
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+
+            if ($user) {
+                // Ověření hesla
+                if (password_verify($password, $user["password"])) {
+                    // Nastavení session
+                    $_SESSION["user_id"] = $user["id"]; // ID uživatele
+                    $_SESSION["nickname"] = $user["nickname"]; // Přezdívka uživatele (volitelně)
+
+                    // Přesměrování na hlavní stránku
+                    header("Location: ../../index.php");
+                    exit();
                 } else {
-                    echo "<div class='error-msg'>Email does not match</div>";
+                    echo "<div class='error-msg'>Password does not match.</div>";
                 }
+            } else {
+                echo "<div class='error-msg'>Email does not exist.</div>";
             }
+
+            $stmt->close();
+        }
         ?>
 
         <form action="login.php" method="post" class="form">
-            <input type="text" placeholder="Email" name="email" class="input-field" required><br>
+            <input type="email" placeholder="Email" name="email" class="input-field" required><br>
             <input type="password" placeholder="Password" name="password" class="input-field" required><br>
             <input type="submit" value="Login" name="login" class="submit-btn">
         </form>
     </div>
-
 </body>
 </html>

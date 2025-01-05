@@ -1,9 +1,40 @@
 <?php
+session_start();
 
-header('Content-Type: application/json');
+// Zahrnutí souboru pro připojení k databázi
+require_once '../database.php'; // Aktualizujte cestu k souboru
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $jsonData = file_get_contents('')
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Získání JSON dat z požadavku
+    $input = file_get_contents('php://input');
+    $data = json_decode($input, true);
+
+    if (isset($data['dictionary']) && is_array($data['dictionary'])) {
+        $dictionary_json = json_encode($data['dictionary']);
+        $user_id = $_SESSION['user_id']; // Předpokládáme, že uživatel je přihlášen a jeho ID je v $_SESSION
+
+        // SQL dotaz pro vložení nebo aktualizaci slovníku
+        $sql = "INSERT INTO dictionaries (user_id, dictionary_data) 
+                VALUES (?, ?) 
+                ON DUPLICATE KEY UPDATE dictionary_data = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('iss', $user_id, $dictionary_json, $dictionary_json);
+
+        if ($stmt->execute()) {
+            http_response_code(200);
+            echo json_encode(['message' => 'Dictionary saved successfully.']);
+        } else {
+            http_response_code(500);
+            echo json_encode(['message' => 'Failed to save dictionary.']);
+        }
+
+        $stmt->close();
+    } else {
+        http_response_code(400);
+        echo json_encode(['message' => 'Invalid data format.']);
+    }
+
+    $conn->close();
 }
-
 ?>
