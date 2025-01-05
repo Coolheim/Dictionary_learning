@@ -1,10 +1,17 @@
+<?php
+// Zahájení relace
+session_start();
+
+// Debugging session
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary settings</title>
-    <link rel="stylesheet" href="../../styles\dictionary_pages.css">
+    <link rel="stylesheet" href="../../styles/dictionary_pages.css">
 </head>
 <body>
     <header class="header">
@@ -26,6 +33,7 @@
     <div class="settings-container">
         <div>
             <form action="">
+                <input type="text" placeholder="Dictionary Name" id="DictionaryName"><br>
                 <input type="text" placeholder="English" id="En_textBox">
                 <input type="text" placeholder="Czech" id="Cz_textBox">
                 <button type="button" onclick="funAddWordToSelectElement()">Add word</button>
@@ -46,15 +54,12 @@
             const en_word = en_word_input.value.trim();
             const cz_word = cz_word_input.value.trim();
 
-            console.log(en_word); // Display the English word
-            console.log(cz_word); // Display the Czech word
-
             if (en_word === "") {
-                alert("En input is empty.");
+                alert("English input is empty.");
                 return;
             }
             if (cz_word === "") {
-                alert("Cz input is empty.");
+                alert("Czech input is empty.");
                 return;
             }
             if (!dictionary[en_word]) {
@@ -69,13 +74,19 @@
                 en_word_input.value = "";
                 cz_word_input.value = "";
             } else {
-                alert("This English word is already added");
+                alert("This English word is already added.");
             }        
 
             console.log(dictionary);
-        }
+        };
 
         const funSaveDic = async () => {
+            const dictionaryName = document.getElementById("DictionaryName").value.trim();
+
+            if (!dictionaryName) {
+                alert("Please enter a name for the dictionary.");
+                return;
+            }
             if (Object.keys(dictionary).length === 0) {
                 alert("The dictionary is empty. Add words before saving.");
                 return;
@@ -87,7 +98,10 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ dictionary }),
+                    body: JSON.stringify({ 
+                        dictionaryName, 
+                        dictionary 
+                    }),
                 });
 
                 if (response.ok) {
@@ -100,13 +114,6 @@
                 alert('An error occurred while saving the dictionary.');
             }
         };
-
-        
     </script>
-
-        <?php
-            session_start();
-            var_dump($_SESSION);
-        ?>
 </body>
 </html>

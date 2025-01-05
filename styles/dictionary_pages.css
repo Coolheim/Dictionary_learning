@@ -150,3 +150,51 @@ select {
     font-size: 1rem;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+
+/* Kontejner pro seznam slovníků */
+.dictionaries-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl pro jednotlivé slovníky (řádky) */
+.dictionary-item {
+    display: flex;
+    justify-content: space-between; /* Text vlevo, tlačítko vpravo */
+    align-items: center;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 1px solid #ddd; /* Světle šedý okraj */
+    border-radius: 8px;
+    background-color: #f4f7fc;
+}
+
+/* Text v jednotlivých slovnících */
+.dictionary-item p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Tlačítko v každém slovníku */
+.dictionary-item button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #444444;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dictionary-item button:hover {
+    background-color: #636363;
+}
