@@ -1,9 +1,9 @@
 <?php 
 
 $hostname = "localhost";
-$dbUser = "root"; // Replace with your MySQL username
-$dbPassword = ""; // Replace with your MySQL password
-$dbName = "login_register"; // Ensure the database name is correct
+$dbUser = "kulheimm"; // Replace with your MySQL username
+$dbPassword = "swa_projekt_24"; // Replace with your MySQL password
+$dbName = "kulheimm_dic_learning"; // Ensure the database name is correct
 
 $conn = mysqli_connect($hostname, $dbUser, $dbPassword, $dbName);
 

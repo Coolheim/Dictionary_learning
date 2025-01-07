@@ -14,8 +14,6 @@
             <a href="about_me.php">About me</a>
             <a href="privacy_policy.php">Privacy Policy</a>
             <a href="profile.php">Profile</a>
-            <a href="../database/login_register/login.php">Sign In</a>
-            <a href="../database/login_register/registration.php">Sign Up</a>
             <a href="../database/login_register/logout.php">Logout</a>
         </div>
     </header>

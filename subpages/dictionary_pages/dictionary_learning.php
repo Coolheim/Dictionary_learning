@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../styles/dictionary_pages.css">
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <style>
-        /* Styl pro skrytí divu */
         .hidden {
             display: none;
         }
@@ -28,7 +27,6 @@
         <h1 class="dashboard-title">Learning</h1>
     </div>
 
-    <!-- První div (viditelný na začátku) -->
     <div class="main-content-container" id="target">
         <h2>Use some of your dictionaries to learn.</h2>
 
@@ -37,27 +35,27 @@
             // Připojení k databázi
             require '../../database/database.php';
 
-            // Zahájení session, pokud ještě neběží
+            // Zahájení session
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
 
-            // Získání ID aktuálního uživatele ze session
+            // Získání ID uživatele
             $user_id = $_SESSION['user_id'];
 
-            // Načtení slovníků pro uživatele
+            // Načtení slovníků uživatele
             $sql = "SELECT dictionary_name FROM dictionaries WHERE user_id = ?";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "i", $user_id);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
 
-            // Zobrazení slovníků
+            // Zobrazení seznamu slovníků
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='dictionary-item'>";
                     echo "<p>" . htmlspecialchars($row['dictionary_name']) . "</p>";
-                    echo "<button onClick=\"toggleDivs('target', 'replace_target')\">Use this dictionary</button>";
+                    echo "<button data-dictionary-name='" . htmlspecialchars($row['dictionary_name']) . "' onClick=\"loadDictionary(this)\">Use this dictionary</button>";
                     echo "</div>";
                 }
             } else {
@@ -70,25 +68,72 @@
         </div>
     </div>
 
-    <!-- Druhý div (skrytý na začátku) -->
     <div class="main-content-container hidden" id="replace_target">
         <div>
-            <button>Previous</button>
-            <button>WORD</button>
-            <button>Next</button>
-        </div>    
+            <button onClick="prevWord()">Previous</button>
+            <button id="word-button" onClick="toggleWord()"></button>
+            <button onClick="nextWord()">Next</button>
+        </div>
         <button onClick="toggleDivs('replace_target', 'target')">Exit</button>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        // Funkce pro přepínání viditelnosti divů
-        function toggleDivs(hideId, showId) {
-            // Skrytí prvního divu
-            document.getElementById(hideId).classList.add("hidden");
-            // Zobrazení druhého divu
-            document.getElementById(showId).classList.remove("hidden");
-        }
-    </script>
+    let dictionaryData = []; // Pole pro uložení slovníku
+    let currentIndex = 0; // Aktuální index slova
+
+    // Přepínání mezi divy
+    function toggleDivs(hideId, showId) {
+        document.getElementById(hideId).classList.add("hidden");
+        document.getElementById(showId).classList.remove("hidden");
+    }
+
+    // Načítání dat slovníku
+    function loadDictionary(button) {
+        const dictionaryName = button.getAttribute('data-dictionary-name');
+
+        fetch(`../../database/dictionaries/get_dictionary.php?dictionary_name=${encodeURIComponent(dictionaryName)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    dictionaryData = Object.entries(data); // Převod objektu na pole dvojic [key, value]
+                    currentIndex = 0; // Nastavení na první slovo
+                    updateWordButton();
+                    toggleDivs('target', 'replace_target');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Aktualizace tlačítka WORD podle aktuálního slova
+    function updateWordButton() {
+        const wordButton = document.getElementById('word-button');
+        const [key, value] = dictionaryData[currentIndex]; // Získání aktuálního páru
+        wordButton.textContent = key; // Nastavení textu tlačítka na klíč
+        wordButton.dataset.key = key; // Uložení klíče do atributu
+        wordButton.dataset.value = value; // Uložení hodnoty do atributu
+    }
+
+    // Přepnutí mezi klíčem a hodnotou
+    function toggleWord() {
+        const wordButton = document.getElementById('word-button');
+        const isKey = wordButton.textContent === wordButton.dataset.key;
+        wordButton.textContent = isKey ? wordButton.dataset.value : wordButton.dataset.key;
+    }
+
+    // Přechod na předchozí slovo (cyklické)
+    function prevWord() {
+        currentIndex = (currentIndex === 0) ? dictionaryData.length - 1 : currentIndex - 1;
+        updateWordButton();
+    }
+
+    // Přechod na další slovo (cyklické)
+    function nextWord() {
+        currentIndex = (currentIndex === dictionaryData.length - 1) ? 0 : currentIndex + 1;
+        updateWordButton();
+    }
+</script>
+
 </body>
 </html>

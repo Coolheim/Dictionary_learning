@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["user"])) {
+        header("Location: database/login_register/login.php");
+        exit();
+    }
+?>
 
 
 <!DOCTYPE html>
@@ -17,8 +24,6 @@
             <a href="subpages/about_me.php">About me</a>
             <a href="subpages/privacy_policy.php">Privacy Policy</a>
             <a href="subpages/profile.php">Profile</a>
-            <a href="database/login_register/login.php">Sign In</a>
-            <a href="database/login_register/registration.php">Sign Up</a>
             <a href="database/login_register/logout.php">Logout</a>
         </div>
     </header>
@@ -31,7 +36,6 @@
         <div class="links">
             <a href="subpages/dictionary_pages/dictionary_setting.php" class="link-btn">Dictionary Settings</a>
             <a href="subpages/dictionary_pages/dictionary_learning.php" class="link-btn">Learning</a>
-            <a href="subpages/dictionary_pages/dictionary_test.php" class="link-btn">Check your understanding</a>
         </div>
         <img src="img/dictionaries.png" alt="Dictionaries" class="dashboard-image">
     </div>

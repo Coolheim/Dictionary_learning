@@ -1,12 +1,12 @@
 <?php
-session_start();
-
-// Pokud je uživatel již přihlášen, přesměrujte ho na hlavní stránku
-if (isset($_SESSION["user_id"])) {
-    header("Location: ../../index.php");
-    exit();
-}
+    session_start();
+    if (isset($_SESSION["user"])) {
+        header("Location: ../../index.php"); // Redirect logged-in users to the dashboard
+        exit();
+    }
+    // Login form logic here
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,11 +47,12 @@ if (isset($_SESSION["user_id"])) {
             if ($user) {
                 // Ověření hesla
                 if (password_verify($password, $user["password"])) {
-                    // Nastavení session
-                    $_SESSION["user_id"] = $user["id"]; // ID uživatele
-                    $_SESSION["nickname"] = $user["nickname"]; // Přezdívka uživatele (volitelně)
-
-                    // Přesměrování na hlavní stránku
+                    // Set session variables
+                    $_SESSION["user_id"] = $user["id"];
+                    $_SESSION["user"] = $user["id"]; // Use "user" to store the logged-in user's ID or identifier
+                    $_SESSION["nickname"] = $user["nickname"]; // Optional: Add additional session data
+                
+                    // Redirect to dashboard
                     header("Location: ../../index.php");
                     exit();
                 } else {
@@ -64,6 +65,11 @@ if (isset($_SESSION["user_id"])) {
             $stmt->close();
         }
         ?>
+
+
+
+
+
 
         <form action="login.php" method="post" class="form">
             <input type="email" placeholder="Email" name="email" class="input-field" required><br>
