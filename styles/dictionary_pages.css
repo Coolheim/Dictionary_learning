@@ -59,15 +59,6 @@ body {
     margin-bottom: 20px;
 }
 
-
-
-
-
-
-
-
-
-
 /* Zarovnání obsahu uvnitř settings-container */
 .settings-container {
     display: flex;
@@ -197,4 +188,33 @@ select {
 
 .dictionary-item button:hover {
     background-color: #636363;
+}
+
+#word-button {
+    font-size: 4rem;
+    padding: 40px 80px;
+    background-color: #28a745; /* zelené tlačítko */
+    margin: 50px;
+}
+
+#word-button:hover {
+    background-color: #1e7e34; /* tmavší zelené při hoveru */
+}
+
+
+.main-content-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f7fc; /* světle šedé pozadí */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 80%; /* Nastavení šířky na 80% */
+    min-height: 500px; /* Minimální šířka divu */
 }
