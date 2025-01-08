@@ -1,0 +1,211 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Zajištění konzistentního chování velikostí */
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    background-color: #444;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.header-buttons a:hover {
+    background-color: #555;
+}
+
+/* Kontejner pro seznam slovníků */
+.dictionaries-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl pro jednotlivé slovníky (řádky) */
+.dictionary-item {
+    display: flex;
+    justify-content: space-between; /* Text vlevo, tlačítko vpravo */
+    align-items: center;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 1px solid #ddd; /* Světle šedý okraj */
+    border-radius: 8px;
+    background-color: #f4f7fc;
+    width: 100%; /* Šířka na 100% rodičovského elementu */
+    max-width: 800px; /* Maximální šířka pro zachování responzivity */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Text v jednotlivých slovnících */
+.dictionary-item p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Zelené tlačítko */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Tmavší zelená */
+}
+
+/* Styl pro tlačítka ve slovnících */
+.dictionary-item button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Hlavní obsah (větší div) */
+.main-content-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: 175px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f7fc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    min-height: 500px;
+    margin-bottom: 40px; /* Přidání mezery mezi tímto divem a dashboard-container */
+}
+
+/* Nastavení velikosti pro hlavní tlačítko */
+#word-button {
+    font-size: 6rem; /* Zvýšení velikosti tlačítka */
+    padding: 60px 120px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Mezera pod tlačítkem "Word" */
+    cursor: pointer;
+}
+
+#word-button:hover {
+    background-color: #1e7e34; /* tmavší zelené při hoveru */
+}
+
+/* Tlačítka pro PREV, NEXT */
+.prev-next-btn {
+    background-color: #007bff; /* Modrá barva */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Dává tlačítkům stejnou šířku */
+    width: auto; /* Přirozená šířka tlačítka */
+}
+.prev-next-btn:hover {
+    background-color: #0056b3; /* Tmavší modrá při hoveru */
+}
+
+/* Tlačítko pro Exit */
+.exit-btn {
+    background-color: #dc3545; /* Červená barva */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: auto; /* Přirozená šířka tlačítka */
+}
+
+.exit-btn:hover {
+    background-color: #c82333; /* Tmavší červená při hoveru */
+}
+
+/* Rozvržení pro tlačítka */
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Tlačítka vedle sebe */
+    gap: 20px; /* Vzdálenost mezi tlačítky */
+    flex-wrap: wrap; /* Umožní zalomení tlačítek na menších obrazovkách */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Pro velké obrazovky - velikost tlačítek */
+@media (min-width: 768px) {
+    .prev-next-btn, .exit-btn {
+        width: auto; /* Tlačítka budou mít svou přirozenou šířku */
+    }
+}
+
+/* Pro menší obrazovky */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column; /* Na menších obrazovkách tlačítka pod sebou */
+    }
+
+    .prev-next-btn {
+        width: 100%; /* Tlačítka budou mít 100% šířky */
+    }
+
+    #word-button {
+        font-size: 5rem; /* Malé zmenšení velikosti tlačítka "Word" */
+        padding: 50px 100px;
+    }
+}
+
+/* Dashboard styling */
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+}

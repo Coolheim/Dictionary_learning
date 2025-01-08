@@ -3,7 +3,7 @@
 session_start();
 
 // Debugging session
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@ var_dump($_SESSION);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary settings</title>
-    <link rel="stylesheet" href="../../styles/dictionary_pages.css">
+    <!-- <link rel="stylesheet" href="../../styles/dictionary_pages.css"> -->
+    <link rel="stylesheet" href="../../styles/dictionary_setting.css">
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -35,9 +36,12 @@ var_dump($_SESSION);
                 <input type="text" placeholder="Dictionary Name" id="DictionaryName"><br>
                 <input type="text" placeholder="English" id="En_textBox">
                 <input type="text" placeholder="Czech" id="Cz_textBox">
-                <button type="button" onclick="funAddWordToSelectElement()">Add word</button>
+                
             </form>
-            <button onclick="funSaveDic()">Save dictionary</button>
+            <div class="btn-container">
+                <button type="button" class="btn" onclick="funAddWordToSelectElement()">Add word</button>
+                <button class="btn btn-secondary" onclick="funSaveDic()">Save dictionary</button>
+            </div>
         </div>
         <div>
             <select name="Words" id="selectElement" multiple="multiple"></select>  

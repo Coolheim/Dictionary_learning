@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary Learning</title>
-    <link rel="stylesheet" href="../../styles/dictionary_pages.css">
+    <link rel="stylesheet" href="../../styles/dictionary_learning.css">
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <style>
         .hidden {
@@ -55,8 +55,9 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='dictionary-item'>";
                     echo "<p>" . htmlspecialchars($row['dictionary_name']) . "</p>";
-                    echo "<button data-dictionary-name='" . htmlspecialchars($row['dictionary_name']) . "' onClick=\"loadDictionary(this)\">Use this dictionary</button>";
+                    echo "<button class='btn btn-secondary' data-dictionary-name='" . htmlspecialchars($row['dictionary_name']) . "' onClick=\"loadDictionary(this)\">Use this dictionary</button>";
                     echo "</div>";
+
                 }
             } else {
                 echo "<p>No dictionaries found.</p>";
@@ -69,12 +70,12 @@
     </div>
 
     <div class="main-content-container hidden" id="replace_target">
-        <div>
-            <button onClick="prevWord()">Previous</button>
-            <button id="word-button" onClick="toggleWord()"></button>
-            <button onClick="nextWord()">Next</button>
+        <button id="word-button" onClick="toggleWord()">Word</button>
+        <div class="button-group">
+            <button class="prev-next-btn" onClick="prevWord()">Previous</button>
+            <button class="prev-next-btn" onClick="nextWord()">Next</button>
         </div>
-        <button onClick="toggleDivs('replace_target', 'target')">Exit</button>
+        <button class="exit-btn" onClick="toggleDivs('replace_target', 'target')">Exit</button>
     </div>
 
     <script>
