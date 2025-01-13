@@ -1,17 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <link rel="stylesheet" href="../styles\subpages.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../styles/first_page_after_login.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="header">
         <a href="first_page_after_login.php" class="logo">Dictionary Learning</a>
+
         <div class="header-buttons">
             <a href="about_me.php">About me</a>
             <a href="privacy_policy.php">Privacy Policy</a>
@@ -20,8 +19,16 @@
         </div>
     </header>
 
-    <h1>User Profile</h1>
-    <p><strong>Nickname:</strong></p>
-    <p><strong>Email:</strong> </p>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Welcome to your Dashboard</h1>
+    </div>
+
+    <div class="links-container">
+        <div class="links">
+            <a href="dictionary_pages/dictionary_setting.php" class="link-btn">Dictionary Settings</a>
+            <a href="dictionary_pages/dictionary_learning.php" class="link-btn">Learning</a>
+        </div>
+        <img src="../img/dictionaries.png" alt="Dictionaries" class="dashboard-image">
+    </div>
 </body>
 </html>

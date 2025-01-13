@@ -14,7 +14,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="../../index.php" class="logo">Dictionary Learning</a>
+        <a href="../first_page_after_login.php" class="logo">Dictionary Learning</a>
         <div class="header-buttons">
             <a href="../about_me.php">About me</a>
             <a href="../privacy_policy.php">Privacy Policy</a>
