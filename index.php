@@ -14,6 +14,8 @@
         <div class="header-buttons">
             <a href="database/login_register/login.php" class="btn">Sign In</a>
             <a href="database/login_register/registration.php" class="btn">Sign Up</a>
+            <a href="database/login_register/login_for_admin.php" class="btn">Sign In (admin)</a>
+
         </div>
     </header>
 
