@@ -12,6 +12,7 @@
         <div class="header-buttons">
             <a href="login.php" class="btn">Sign In</a>
             <a href="registration.php" class="btn">Sign Up</a>
+            <a href="login_for_admin.php" class="btn">Sign In (admin)</a>
         </div>
     </header>
 

@@ -1,0 +1,177 @@
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    background-color: #444;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.header-buttons a:hover {
+    background-color: #555;
+}
+
+/* Main Content Styling */
+.about_me_div {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+/* Highlight links inside content */
+.about_me_div a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.about_me_div a:hover {
+    color: #004099;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about_me_div {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 50px auto; /* Centrovaný obsah */
+    padding: 20px;
+    background: #f9f9f9; /* Světle šedé pozadí */
+    border-radius: 10px; /* Kulaté rohy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín */
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.users-container {
+    margin-top: 20px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #555;
+    text-align: center;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden; /* Schovat přebytek */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Stín tabulky */
+}
+
+.users-table thead {
+    background: #007BFF; /* Modrá barva záhlaví */
+    color: white;
+    font-weight: bold;
+}
+
+.users-table th,
+.users-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.users-table th:first-child,
+.users-table td:first-child {
+    text-align: center;
+    width: 5%;
+}
+
+.users-table td:last-child {
+    text-align: center;
+    width: 15%;
+}
+
+.delete-btn {
+    background: #FF4C4C; /* Červená barva tlačítka */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+    background: #ff2b2b; /* Tmavší červená při najetí */
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-title {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .users-table th, .users-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .delete-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}

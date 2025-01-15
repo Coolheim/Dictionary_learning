@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Zajištění konzistentního chování velikostí */
+    box-sizing: border-box;
 }
 
 /* Body Styling */
@@ -58,15 +58,15 @@ body {
 /* Styl pro jednotlivé slovníky (řádky) */
 .dictionary-item {
     display: flex;
-    justify-content: space-between; /* Text vlevo, tlačítko vpravo */
+    justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    margin: 10px 0;
-    border: 1px solid #ddd; /* Světle šedý okraj */
+    gap: 2em;
+    border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f4f7fc;
-    width: 100%; /* Šířka na 100% rodičovského elementu */
-    max-width: 800px; /* Maximální šířka pro zachování responzivity */
+    width: 100%;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -79,121 +79,96 @@ body {
     color: #333;
 }
 
-.btn-primary {
-    background-color: #28a745; /* Zelené tlačítko */
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #218838; /* Tmavší zelená */
-}
-
-/* Styl pro tlačítka ve slovnících */
+/* Tlačítka pro použití slovníku */
 .dictionary-item button {
     padding: 8px 12px;
     font-size: 0.9rem;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
 }
 
-/* Hlavní obsah (větší div) */
+.dictionary-item button:hover {
+    background-color: #495057;
+    transform: scale(1.05); /* Efekt zvětšení při hoveru */
+}
+
+/* Styling pro hlavní obsah */
 .main-content-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: 175px;
-    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f4f7fc;
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    width: 80%;
-    min-height: 500px;
-    margin-bottom: 40px; /* Přidání mezery mezi tímto divem a dashboard-container */
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Nastavení velikosti pro hlavní tlačítko */
-#word-button {
-    font-size: 6rem; /* Zvýšení velikosti tlačítka */
-    padding: 60px 120px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 8px;
-    margin-bottom: 20px; /* Mezera pod tlačítkem "Word" */
-    cursor: pointer;
-}
-
-#word-button:hover {
-    background-color: #1e7e34; /* tmavší zelené při hoveru */
+/* Skrytý obsah s přechodem */
+.main-content-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95); /* Zmenšení pro efekt */
 }
 
 /* Tlačítka pro PREV, NEXT */
 .prev-next-btn {
-    background-color: #007bff; /* Modrá barva */
-    color: white;
     padding: 15px 30px;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #ff6b6b, #ff8c00); /* Gradient pro tlačítko */
+    color: white;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1; /* Dává tlačítkům stejnou šířku */
-    width: auto; /* Přirozená šířka tlačítka */
-}
-.prev-next-btn:hover {
-    background-color: #0056b3; /* Tmavší modrá při hoveru */
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-bottom: 10px;
+    border: none;
 }
 
-/* Tlačítko pro Exit */
+.prev-next-btn:hover {
+    background: linear-gradient(45deg, #ff4c4c, #ff7a00); /* Tmavší gradient při hoveru */
+    transform: scale(1.05); /* Efekt zvětšení při hoveru */
+}
+
+/* Tlačítko pro EXIT */
 .exit-btn {
-    background-color: #dc3545; /* Červená barva */
-    color: white;
     padding: 15px 30px;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #dc3545, #c82333); /* Gradient pro EXIT */
+    color: white;
     border-radius: 6px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
-    width: auto; /* Přirozená šířka tlačítka */
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    border: none;
 }
 
 .exit-btn:hover {
-    background-color: #c82333; /* Tmavší červená při hoveru */
+    background: linear-gradient(45deg, #b22e2e, #a21f1f); /* Tmavší gradient při hoveru */
+    transform: scale(1.05); /* Efekt zvětšení při hoveru */
 }
 
 /* Rozvržení pro tlačítka */
 .button-group {
     display: flex;
-    justify-content: space-between; /* Tlačítka vedle sebe */
-    gap: 20px; /* Vzdálenost mezi tlačítky */
-    flex-wrap: wrap; /* Umožní zalomení tlačítek na menších obrazovkách */
-    width: 100%;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-/* Pro velké obrazovky - velikost tlačítek */
-@media (min-width: 768px) {
-    .prev-next-btn, .exit-btn {
-        width: auto; /* Tlačítka budou mít svou přirozenou šířku */
-    }
-}
-
-/* Pro menší obrazovky */
-@media (max-width: 768px) {
-    .button-group {
-        flex-direction: column; /* Na menších obrazovkách tlačítka pod sebou */
-    }
-
-    .prev-next-btn {
-        width: 100%; /* Tlačítka budou mít 100% šířky */
-    }
-
-    #word-button {
-        font-size: 5rem; /* Malé zmenšení velikosti tlačítka "Word" */
-        padding: 50px 100px;
-    }
-}
-
-/* Dashboard styling */
+/* Dashboard Styling */
 .dashboard-container {
     max-width: 800px;
     margin: 50px auto;
@@ -208,4 +183,43 @@ body {
     font-size: 30px;
     color: #333;
     margin-bottom: 20px;
+}
+
+/* Tlačítko pro Word */
+#word-button {
+    padding: 20px 40px;
+    font-size: 10rem;
+    background: linear-gradient(45deg, #28a745, #218838); /* Gradient pro tlačítko Word */
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: none;
+}
+
+#word-button:hover {
+    background: linear-gradient(45deg, #218838, #1e7e34); /* Tmavší gradient při hoveru */
+    transform: scale(1.05); /* Efekt zvětšení při hoveru */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .main-content-container {
+        width: 90%; /* Zajištění, že hlavní obsah bude mít šířku 90% na menších obrazovkách */
+    }
+
+    .button-group {
+        flex-direction: column; /* Tlačítka budou pod sebou na menších obrazovkách */
+    }
+
+    .prev-next-btn, .exit-btn {
+        width: 100%; /* Tlačítka budou mít 100% šířky */
+    }
+
+    #word-button {
+        font-size: 4rem; /* Zmenšení velikosti tlačítka "Word" */
+        padding: 50px 100px;
+    }
 }

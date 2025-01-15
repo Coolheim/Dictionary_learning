@@ -164,3 +164,47 @@ body {
 
 }
 
+/* Styly pro kontejnery s obrázky */
+.images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+/* Styl pro nadpisy obrázků */
+.nadpisy_obrazku {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Styly pro obrázky */
+.images img {
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries pro responzivní design */
+@media (max-width: 768px) {
+    .images {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .nadpisy_obrazku {
+        font-size: 1.5rem;
+    }
+
+    .images img {
+        width: 100%;
+        height: auto;
+    }
+}

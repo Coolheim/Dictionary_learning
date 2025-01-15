@@ -1,4 +1,29 @@
+<?php
+// Start the session
+session_start();
 
+// Include database connection
+require_once "../database/database.php"; // Upravte cestu podle umístění vašeho souboru
+
+// Check if user is logged in
+if (!isset($_SESSION["user_id"])) {
+    // If not logged in, redirect to login page
+    header("Location: ../login_register/login.php");
+    exit();
+}
+
+// Fetch user data based on session user_id
+$user_id = $_SESSION["user_id"];
+$sql = "SELECT nickname, email FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+$stmt->close();
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +31,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="../styles\subpages.css">
+    <link rel="stylesheet" href="../styles/profile.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -20,8 +45,15 @@
         </div>
     </header>
 
-    <h1>User Profile</h1>
-    <p><strong>Nickname:</strong></p>
-    <p><strong>Email:</strong> </p>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">User profile</h1>
+    </div>
+
+    <div class="dashboard-container">
+        <p><strong>Nickname:</strong> <?php echo htmlspecialchars($user["nickname"]); ?></p>
+        <p><strong>Email:</strong> <?php echo htmlspecialchars($user["email"]); ?></p>
+    </div>
+
+    
 </body>
 </html>
