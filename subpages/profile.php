@@ -52,6 +52,7 @@ $conn->close();
     <div class="dashboard-container">
         <p><strong>Nickname:</strong> <?php echo htmlspecialchars($user["nickname"]); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user["email"]); ?></p>
+
     </div>
 
     

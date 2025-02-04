@@ -5,31 +5,39 @@ session_start();
 // Include database connection
 require_once "../../database/database.php"; // Upravte cestu podle své složky
 
-
 // Handle delete request
 if (isset($_POST['delete_user'])) {
     $user_id = $_POST['user_id'];
-
-    // SQL query to delete the user
     $delete_sql = "DELETE FROM users WHERE id = ?";
     $stmt = $conn->prepare($delete_sql);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
-
-    if ($stmt->affected_rows > 0) {
-        echo "<script>alert('User deleted successfully!');</script>";
-    } else {
-        echo "<script>alert('Failed to delete user.');</script>";
-    }
-
     $stmt->close();
+}
+
+// Handle add admin request
+if (isset($_POST['add_admin'])) {
+    $admin_name = $_POST['admin_name'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password === $confirm_password) {
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $insert_sql = "INSERT INTO admins (admin_name, password) VALUES (?, ?)";
+        $stmt = $conn->prepare($insert_sql);
+        $stmt->bind_param("ss", $admin_name, $hashed_password);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        echo "<script>alert('Passwords do not match!');</script>";
+    }
+    echo "<script>alert('New admin was successfully added!');</script>";
 }
 
 // Fetch all users
 $sql = "SELECT id, nickname, email FROM users";
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +45,6 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admins page</title>
     <link rel="stylesheet" href="../../styles/admin_page.css">
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="header">
@@ -83,6 +90,19 @@ $result = $conn->query($sql);
                     ?>
                 </tbody>
             </table>
+        </div>
+
+        <div class="add-admin-container">
+            <h2 class="section-title">Add New Admin</h2>
+            <form method="post" action="">
+                <label for="admin_name">Admin Name:</label>
+                <input type="text" name="admin_name" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" required>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password" required>
+                <button type="submit" name="add_admin">Add Admin</button>
+            </form>
         </div>
     </div>
 </body>
