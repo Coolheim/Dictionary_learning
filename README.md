@@ -20,11 +20,10 @@ cd dictionary-learning
 ```
 
 ## Nastav databázi: 
-### - Vytvoř MySQL databázi
-### - Importuj soubor `database.sql`
-
-### Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
-### Přihlas se nebo vytvoř nový účet.
+- Vytvoř MySQL databázi
+- Importuj soubor `database.sql`
+- Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
+- Přihlas se nebo vytvoř nový účet.
 
 ## 💾 Struktura databáze
 
