@@ -64,5 +64,3 @@ cd dictionary-learning
 - **Hosting (volitelně):** Laragon / XAMPP pro lokální vývoj  
 
 ---
-
-Tahle verze je čistá, přehledná a dobře čitelná v Markdownu. 🚀
