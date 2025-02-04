@@ -9,12 +9,14 @@
 - ✅ **Přehledný uživatelský panel** – Snadná navigace a správa účtu.
 - ✅ **Admin rozhraní** – Správa uživatelů a obsahu aplikace.
 
+---
+
 ## 🛠️ Instalace
 
 ```bash
 # Naklonuj repozitář:
 git clone https://github.com/tvuj-repo/dictionary-learning.git
-```
+
 # Přesuň se do složky projektu:
 cd dictionary-learning
 
@@ -24,14 +26,3 @@ cd dictionary-learning
 
 # Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
 # Přihlas se nebo vytvoř nový účet.
-
-users (id, nickname, email, password)
-admins (id, admin_name, password)
-dictionaries (id, user_id, dictionary_name)
-words (id, dictionary_id, word, translation)
-
-- PHP (Backend)
-- MySQL (Databáze)
-- HTML, CSS, JavaScript (Frontend)
-
-Pokud máš dotazy nebo návrhy, můžeš mě kontaktovat na email@example.com 😊
