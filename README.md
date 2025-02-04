@@ -26,3 +26,26 @@ cd dictionary-learning
 
 # Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
 # Přihlas se nebo vytvoř nový účet.
+
+## 💾 Struktura databáze
+
+### 🗃️ Tabulky a jejich sloupce
+
+| Tabulka       | Sloupce                                       |
+|--------------|----------------------------------------------|
+| `users`      | `id`, `nickname`, `email`, `password`       |
+| `admins`     | `id`, `admin_name`, `password`              |
+| `dictionaries` | `id`, `user_id`, `dictionary_name`        |
+| `words`      | `id`, `dictionary_id`, `word`, `translation` |
+
+---
+
+## 🌍 Použité technologie
+
+| Technologie  | Použití           |
+|-------------|------------------|
+| **PHP**     | Backend          |
+| **MySQL**   | Databáze         |
+| **HTML**    | Struktura webu   |
+| **CSS**     | Stylování        |
+| **JavaScript** | Interaktivita  |
