@@ -26,6 +26,8 @@ cd dictionary-learning
 
 # Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
 # Přihlas se nebo vytvoř nový účet.
+```
+
 ## 💾 Struktura databáze
 
 ### 📌 Tabulky a jejich sloupce
