@@ -26,26 +26,41 @@ cd dictionary-learning
 
 # Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
 # Přihlas se nebo vytvoř nový účet.
-
 ## 💾 Struktura databáze
 
-### 🗃️ Tabulky a jejich sloupce
+### 📌 Tabulky a jejich sloupce
 
-| Tabulka       | Sloupce                                       |
-|--------------|----------------------------------------------|
-| `users`      | `id`, `nickname`, `email`, `password`       |
-| `admins`     | `id`, `admin_name`, `password`              |
-| `dictionaries` | `id`, `user_id`, `dictionary_name`        |
-| `words`      | `id`, `dictionary_id`, `word`, `translation` |
+**🟢 users**  
+- `id` – Primární klíč  
+- `nickname` – Přezdívka uživatele  
+- `email` – Emailová adresa  
+- `password` – Hashované heslo  
+
+**🟢 admins**  
+- `id` – Primární klíč  
+- `admin_name` – Jméno administrátora  
+- `password` – Hashované heslo  
+
+**🟢 dictionaries**  
+- `id` – Primární klíč  
+- `user_id` – Cizí klíč odkazující na `users(id)`  
+- `dictionary_name` – Název slovníku  
+
+**🟢 words**  
+- `id` – Primární klíč  
+- `dictionary_id` – Cizí klíč odkazující na `dictionaries(id)`  
+- `word` – Slovíčko  
+- `translation` – Překlad  
 
 ---
 
 ## 🌍 Použité technologie
 
-| Technologie  | Použití           |
-|-------------|------------------|
-| **PHP**     | Backend          |
-| **MySQL**   | Databáze         |
-| **HTML**    | Struktura webu   |
-| **CSS**     | Stylování        |
-| **JavaScript** | Interaktivita  |
+- **Backend:** PHP  
+- **Databáze:** MySQL  
+- **Frontend:** HTML, CSS, JavaScript  
+- **Hosting (volitelně):** Laragon / XAMPP pro lokální vývoj  
+
+---
+
+Tahle verze je čistá, přehledná a dobře čitelná v Markdownu. 🚀
