@@ -10,21 +10,21 @@
 ## 🛠️ Instalace
 
 
-# Naklonuj repozitář:
+### Naklonuj repozitář:
 ```bash
 git clone https://github.com/tvuj-repo/dictionary-learning.git
 ```
-# Přesuň se do složky projektu:
+### Přesuň se do složky projektu:
 ```bash
 cd dictionary-learning
 ```
 
-# Nastav databázi: 
-# - Vytvoř MySQL databázi
-# - Importuj soubor `database.sql`
+## Nastav databázi: 
+### - Vytvoř MySQL databázi
+### - Importuj soubor `database.sql`
 
-# Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
-# Přihlas se nebo vytvoř nový účet.
+### Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
+### Přihlas se nebo vytvoř nový účet.
 
 ## 💾 Struktura databáze
 
