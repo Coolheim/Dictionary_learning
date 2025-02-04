@@ -14,7 +14,7 @@
 ```bash
 # Naklonuj repozitář:
 git clone https://github.com/tvuj-repo/dictionary-learning.git
-
+```
 # Přesuň se do složky projektu:
 cd dictionary-learning
 
