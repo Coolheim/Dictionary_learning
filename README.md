@@ -1,24 +1,23 @@
 # 📚 Dictionary Learning
 
-**Dictionary Learning** je webová aplikace pro efektivní učení cizích slovíček pomocí kartiček. Uživatelé si mohou vytvářet vlastní slovníky, testovat své znalosti a sledovat svůj pokrok.
+**Dictionary Learning** je webová aplikace pro efektivní učení cizích slovíček pomocí kartiček. Uživatelé si mohou vytvářet vlastní slovníky a testovat své znalosti.
 
 ## 🚀 Funkce
-- ✅ **Vytváření a správa slovníků** – Každý uživatel si může vytvořit vlastní seznam slovíček.
-- ✅ **Interaktivní kartičky** – Učení probíhá pomocí systému kartiček, které se zobrazují náhodně.
-- ✅ **Testovací režim** – Možnost ověření znalostí pomocí jednoduchých kvízů.
-- ✅ **Přehledný uživatelský panel** – Snadná navigace a správa účtu.
-- ✅ **Admin rozhraní** – Správa uživatelů a obsahu aplikace.
-
+- ✅ **Vytváření vlastních slovníků** – Každý uživatel si může vytvořit vlastní seznamy slovíček.
+- ✅ **Interaktivní kartičky** – Učení probíhá pomocí systému kartiček.
 ---
 
 ## 🛠️ Instalace
 
-```bash
-# Naklonuj repozitář:
-git clone https://github.com/tvuj-repo/dictionary-learning.git
 
+# Naklonuj repozitář:
+```bash
+git clone https://github.com/tvuj-repo/dictionary-learning.git
+```
 # Přesuň se do složky projektu:
+```bash
 cd dictionary-learning
+```
 
 # Nastav databázi: 
 # - Vytvoř MySQL databázi
@@ -26,41 +25,44 @@ cd dictionary-learning
 
 # Spusť aplikaci na lokálním serveru (např. Laragon, XAMPP).
 # Přihlas se nebo vytvoř nový účet.
-```
 
 ## 💾 Struktura databáze
 
-### 📌 Tabulky a jejich sloupce
+### 🟢 users
+```bash
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `nickname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+)
 
-**🟢 users**  
-- `id` – Primární klíč  
-- `nickname` – Přezdívka uživatele  
-- `email` – Emailová adresa  
-- `password` – Hashované heslo  
-
-**🟢 admins**  
-- `id` – Primární klíč  
-- `admin_name` – Jméno administrátora  
-- `password` – Hashované heslo  
-
-**🟢 dictionaries**  
-- `id` – Primární klíč  
-- `user_id` – Cizí klíč odkazující na `users(id)`  
-- `dictionary_name` – Název slovníku  
-
-**🟢 words**  
-- `id` – Primární klíč  
-- `dictionary_id` – Cizí klíč odkazující na `dictionaries(id)`  
-- `word` – Slovíčko  
-- `translation` – Překlad  
-
----
+```
+### 🟢 dictionaries
+```bash
+CREATE TABLE `dictionaries` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `dictionary_data` json NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dictionary_name` varchar(255) NOT NULL
+)
+```
+### 🟢 admins
+```bash
+CREATE TABLE `admins` (
+  `id` int NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+)
+```
 
 ## 🌍 Použité technologie
 
 - **Backend:** PHP  
 - **Databáze:** MySQL  
 - **Frontend:** HTML, CSS, JavaScript  
-- **Hosting (volitelně):** Laragon / XAMPP pro lokální vývoj  
+- **Hosting:** Laragon / XAMPP pro lokální vývoj  
 
 ---
