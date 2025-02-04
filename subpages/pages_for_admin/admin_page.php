@@ -5,6 +5,7 @@ session_start();
 // Include database connection
 require_once "../../database/database.php"; // Upravte cestu podle své složky
 
+
 // Handle delete request
 if (isset($_POST['delete_user'])) {
     $user_id = $_POST['user_id'];
