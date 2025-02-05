@@ -1,7 +1,5 @@
 # 📚 Dictionary Learning
 
-**URL:** https://app.opent2.com/it3a/kulheimm/Projekt%201/ 
-
 **Dictionary Learning** je webová aplikace pro efektivní učení cizích slovíček pomocí kartiček. Uživatelé si mohou vytvářet vlastní slovníky a testovat své znalosti.
 
 ## 🚀 Funkce
