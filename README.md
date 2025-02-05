@@ -12,7 +12,7 @@
 
 ### Naklonuj repozitář:
 ```bash
-git clone https://github.com/tvuj-repo/dictionary-learning.git
+git clone https://github.com/Coolheim/Dictionary_learning.git
 ```
 ### Přesuň se do složky projektu:
 ```bash
